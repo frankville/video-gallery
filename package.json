@@ -1,0 +1,16 @@
+{
+  "name": "video-galery",
+  "version": "0.0.0",
+  "description": "video list and player with  angularJS + NodeJS",
+  "main": "nodeserver.js",
+  "dependencies": {
+    "express": "^4.8.7",
+    "video-thumb": "^0.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
