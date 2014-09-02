@@ -1,0 +1,30 @@
+{
+  "name": "video-gallery",
+  "version": "0.0.0",
+  "homepage": "https://github.com/frankville/video-gallery",
+  "authors": [
+    "Villasanti Francisco <villasanti.francisco@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "description": "test app video playlist using angular and html5 video",
+  "keywords": [
+    "angular",
+    "video"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "~0.11.0",
+    "angular-resource": "~1.2.23",
+    "angular-route": "~1.2.23",
+    "angular-scrollable-table": "*",
+    "angular": "~1.2.23",
+    "jquery": "~2.1.1"
+  }
+}
