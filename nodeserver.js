@@ -40,8 +40,8 @@ function makeThumbnails(){
 
 
 makeThumbnails();
-
 app.use("/",express.static(__dirname));
+app.use("/static",express.static(__dirname+"/public"));
 
 app.get("/", function(req,res){
 
