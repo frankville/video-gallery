@@ -5,7 +5,7 @@ var path = require("path");
 var util = require("util");
 var videoThumb = require("video-thumb");
 
-var dirPath = "./videos/";
+var dirPath = "videos/";
 var dirThumbnails = "./thumbnails/";
 
 var app = express();
@@ -27,11 +27,11 @@ function makeThumbnails(){
 			var fileName = file.toString();
 			console.log(fileName);
 			fileName = fileName.replace("videos/","");
-			console.log(fileName);
+
 			videoThumb.extract(file, dirThumbnails+fileName+'.png', '00:00:22', '128x100', function(){
-				console.log("creado el thumbnail en "+dirThumbnails+fileName+'.png');
+				console.log("creado el thumbnail en "+ dirThumbnails+fileName+'.png');
 			});
-			console.log("lo que le paso al thumbnail "+file);
+			console.log("lo que le paso al thumbnail "+fileName);
 
 		});
 
@@ -66,9 +66,10 @@ app.get("/videoList",function(req,res){
 			var fileName = file.toString();
 			console.log(fileName);
 			fileName = fileName.replace("videos/","");
+			var urlThumbnail = dirThumbnails.replace("./","");
 			console.log(fileName);
-			videoList.push({name:fileName,creationDateTime:cDate,thumbnail:dirThumbnails+fileName+".png"});
-			console.log("lo que le paso al thumbnail "+dirThumbnails+fileName+".png");
+			videoList.push({name:fileName,creationDateTime:cDate,thumbnail: urlThumbnail+fileName+'.png'});
+			console.log("lo que le paso al thumbnail "+ urlThumbnail+fileName+'.png');
 
 		});
 		res.send(videoList);
@@ -80,7 +81,7 @@ app.get("/videoList",function(req,res){
 
 app.get("/playVideo/:videoName",function(req,res){
 	console.log("nombre de video a hacer stream "+req.params.videoName);
-	var streamUrl = "http://localhost:2011/videos/"+req.params.videoName;
+	var streamUrl = "http://192.168.0.103:2011/videos/"+req.params.videoName;
 	//var streamUrl = "http://192.168.11.251:2011/videos/"+req.params.videoName;
 	res.json({url: streamUrl});
 });

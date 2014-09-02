@@ -1,4 +1,4 @@
-var app = angular.module("videoGallery", ["ngRoute","ngResource","ui.bootstrap"]);
+var app = angular.module("videoGallery", ["ngRoute","ngResource","ui.bootstrap","scrollable-table"]);
 
 		app.config(function($routeProvider){
 				$routeProvider.when("/",{
@@ -48,13 +48,19 @@ var app = angular.module("videoGallery", ["ngRoute","ngResource","ui.bootstrap"]
 				var queryObj=videoPlayService.get({videoName: vidName});
 				queryObj.$promise.then(function(response){
 						console.log("estte es el url stream "+response.url);
-						$scope.videosrc = response.url;
+						$scope.videosrc = decodeURI(response.url);
 					});				
 			}
 				
 			function init(){
-				$scope.videoList = videoListService.query();
-				console.log($scope.videoList);	
+				$scope.videoList = videoListService.query(function(){
+					
+				});
+
+			    $scope.$watch('selected', function(fac) {
+			       $scope.$broadcast("rowSelected", fac);
+			    });
+					
 			}
 
 
