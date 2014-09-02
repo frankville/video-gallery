@@ -1,0 +1,36 @@
+<div ng-controller="mainViewController">
+	<div class="row">
+		<div class="col-xs-4">
+			<input class="form-control" type="text" ng-model="filterInput">
+			<br />
+			<h3>Video List</h3>
+			<br />
+			<scrollable-table watch="videoList">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Thumbnail</th>
+							<th>File Name</th>
+							<th>Creation Timestamp</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="video in videoList | filter:filterInput">
+							<td><img ng-src="{{video.thumbnail}}" height="36" width="48"></td>
+							<td><a href="" ng-click="playVideo(video.name)">{{video.name}}</a></td>
+							<td>{{video.creationDateTime | date :'dd/MM/yyyy HH:mm:ss' }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</scrollable-table>	
+			<a href="#/wall">Go to wall</a>
+		</div>
+
+		<div class="col-xs-7">
+			<div>	
+				<p>{{videosrc}}</p>
+				<video ng-src="{{videosrc}}" autoplay height="auto" width="100%" style="background-color: black;" controls></video>
+			</div>
+		</div>
+	</div>
+</div>
